@@ -5,73 +5,79 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
 
+    public static final char SUBTRACTION = '-';
+    public static final char MULTIPLICATION = '*';
+    public static final char DIVISION = '/';
+    public static final char RESULT = '=';
+
+
     @Test
     @DisplayName("Testing addition")
     void testCalculateAdd() {
-        int a = 1;
-        int b = 1;
-        char o = '+';
+        int firstNumber = 1;
+        int secondNumber = 1;
+        char operator = '+';
         int expected = 2;
 
-        int result = Calculator.calculate(a, b, o);
+        int result = Calculator.calculate(firstNumber, secondNumber, operator);
         assertEquals(expected, result);
     }
 
     @Test
     @DisplayName("Testing subtraction")
     void testCalculateSub() {
-        int a = 2;
-        int b = 1;
-        char o = '-';
+        int firstNumber = 2;
+        int secondNumber = 1;
+        char operator = SUBTRACTION;
         int expected = 1;
 
-        int result = Calculator.calculate(a, b, o);
+        int result = Calculator.calculate(firstNumber, secondNumber, operator);
         assertEquals(expected, result);
     }
 
     @Test
     @DisplayName("Testing multiplication")
     void testCalculateMul() {
-        int a = 2;
-        int b = 2;
-        char o = '*';
+        int firstNumber = 2;
+        int secondNumber = 2;
+        char operator = MULTIPLICATION;
         int expected = 4;
 
-        int result = Calculator.calculate(a, b, o);
+        int result = Calculator.calculate(firstNumber, secondNumber, operator);
         assertEquals(expected, result);
     }
 
     @Test
     @DisplayName("Testing division")
     void testCalculateDiv() {
-        int a = 6;
-        int b = 3;
-        char o = '/';
+        int firstNumber = 6;
+        int secondNumber = 3;
+        char operator = DIVISION;
         int expected = 2;
 
-        int result = Calculator.calculate(a, b, o);
+        int result = Calculator.calculate(firstNumber, secondNumber, operator);
         assertEquals(expected, result);
     }
 
     @Test
     @DisplayName("Testing division by zero")
     void testCalculateDivByZero() {
-        int a = 2;
-        int b = 0;
-        char o = '/';
+        int firstNumber = 2;
+        int secondNumber = 0;
+        char operator = CalculatorTest.DIVISION;
 
         assertThrows(RuntimeException.class,
-                ()-> {Calculator.calculate(a, b, o);});
+                ()-> {Calculator.calculate(firstNumber, secondNumber, operator);});
     }
 
     @Test
     @DisplayName("Testing wrong operator")
     void testCalculateWrongOperator() {
-        int a = 2;
-        int b = 0;
-        char o = '=';
+        int firstNumber = 2;
+        int secondNumber = 0;
+        char operator = RESULT;
 
         assertThrows(RuntimeException.class,
-                ()-> {Calculator.calculate(a, b, o);});
+                ()-> {Calculator.calculate(firstNumber, secondNumber, operator);});
     }
 }
